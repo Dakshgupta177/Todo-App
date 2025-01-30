@@ -3,15 +3,23 @@ import { FaRegEdit } from "react-icons/fa";
 import { AiFillDelete } from "react-icons/ai";
 import { IoMdAdd } from "react-icons/io";
 import { v4 as uuidv4 } from "uuid";
+import { MdDarkMode } from "react-icons/md";
+import { MdLightMode } from "react-icons/md";
 import Navbar from "./navbar";
 
 function App() {
   const [Todos, setTodos] = useState([]);
   const [Todo, setTodo] = useState("");
   const [Finish, setFinish] = useState(true);
+  const [color, setcolor] = useState('')
+  const [dark, setdark] = useState(false);
   let setTodostoLS = () => {
     localStorage.setItem("Todos", JSON.stringify(Todos));
   };
+  let handledark=() => {
+    setdark(!dark)
+
+  }
   let handleAdd = () => {
     setTodos([...Todos, { Todo, iscomp: false, id: uuidv4() }]);
     setTodo("");
@@ -61,10 +69,19 @@ function App() {
     }
   }, [Todos]);
   return (
-    <>
-      <Navbar />
-      <div className="bg-indigo-200 font-bold text-lg p-4 py-10 m-4 h-[80vh] rounded-lg w-[40vw] mx-auto max-md:w-full max-lg:w-[80vw]">
-        <h1 className="mx-4">Add Todos</h1>
+    <div className="h-screen"
+    style={{
+      backgroundColor: dark ? '#333' : '#fff',
+    }}>
+      <Navbar/>
+      
+      <div className="bg-indigo-200 font-bold text-lg p-4 py-10 m-4 h-[80vh] rounded-lg w-[40vw] mx-auto max-md:w-full max-lg:w-[80vw]"
+      style={{
+        backgroundColor: dark ? 'rgb(117, 62, 181)' : '',
+      }}>
+        <h1 className="mx-4 flex justify-between items-center">Add Todos <span onClick={handledark}>{dark? <MdDarkMode />:<MdLightMode />}</span></h1>
+        
+
         <div className="flex w-full justify-between items-center max-sm:flex-col">
           <input
             type="text"
@@ -94,6 +111,7 @@ function App() {
         </div>
         <div className="">
           <h1 className="mt-4 mx-4">Your Todos</h1>
+
           {Todos.map((e) => {
             return (
               (Finish || !e.iscomp) && (
@@ -144,7 +162,7 @@ function App() {
           })}
         </div>
       </div>
-    </>
+    </div>
   );
 }
 
