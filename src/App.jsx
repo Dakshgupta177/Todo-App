@@ -79,7 +79,7 @@ function App() {
       style={{
         backgroundColor: dark ? 'rgb(117, 62, 181)' : '',
       }}>
-        <h1 className="mx-4 flex justify-between items-center">Add Todos <span onClick={handledark}>{dark? <MdDarkMode />:<MdLightMode />}</span></h1>
+        <h1 className="mx-4 flex justify-between items-center">Add Todos <span onClick={handledark} className="cursor-pointer">{dark? <MdDarkMode />:<MdLightMode />}</span></h1>
         
 
         <div className="flex w-full justify-between items-center max-sm:flex-col">
@@ -88,11 +88,11 @@ function App() {
             onChange={handleChange}
             value={Todo}
             placeholder="Enter a todo"
-            className="text-sm font-semibold mx-4 w-full bg-white rounded text-center"
+            className="text-sm font-semibold mx-4 w-full bg-white rounded text-center cursor-pointer"
           />
           <button
             onClick={handleAdd}
-            className="bg-green-500 rounded text-xs p-1 font-bold text-white mx-4 h-6 max-sm:w-full max-sm:my-2 disabled:bg-green-400 flex justify-center items-center"
+            className="bg-green-500 rounded text-xs p-1 font-bold text-white mx-4 h-6 max-sm:w-full cursor-pointer max-sm:my-2 disabled:bg-green-400 flex justify-center items-center"
             disabled={Todo.length <= 2}
           >
             <IoMdAdd />
@@ -105,7 +105,7 @@ function App() {
             id=""
             onChange={handleFinish}
             checked={Finish}
-            className="m-4"
+            className="m-4 cursor-pointer"
           />
           <p>Show Finished</p>
         </div>
@@ -126,7 +126,7 @@ function App() {
                       name={e.id}
                       checked={e.iscomp}
                       id=""
-                      className="m-4"
+                      className="m-4 cursor-pointer"
                     />
                     <p
                       className={
@@ -143,7 +143,7 @@ function App() {
                       onClick={() => {
                         handleEdit(e.id, e.Todo);
                       }}
-                      className="bg-green-500 rounded text-xs p-1 font-bold text-white mx-4 h-6"
+                      className="bg-green-500 rounded text-xs p-1 font-bold text-white mx-4 h-6 cursor-pointer"
                     >
                       <FaRegEdit />
                     </button>
@@ -151,7 +151,7 @@ function App() {
                       onClick={() => {
                         handleDelete(e.id);
                       }}
-                      className="bg-green-500 rounded text-xs p-1 font-bold text-white mx-4 h-6"
+                      className="bg-green-500 rounded text-xs p-1 font-bold text-white mx-4 h-6 cursor-pointer"
                     >
                       <AiFillDelete />
                     </button>
