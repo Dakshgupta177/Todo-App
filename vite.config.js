@@ -1,5 +1,5 @@
 import { defineConfig } from "vite";
-import HtmlWebpackPlugin from ("html-webpack-plugin");
+import HtmlWebpackPlugin from "html-webpack-plugin";
 import react from "@vitejs/plugin-react";
 import tailwindcss from "@tailwindcss/vite";
 
